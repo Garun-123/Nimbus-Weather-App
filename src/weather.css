@@ -15,16 +15,34 @@ li{
 a{
     text-decoration:none;
 }
-.container>content{
+
+
+.container>.content{
 
     display:flex;
     flex-direction:column;
-    justify-content:space-between;
+    gap:30px;
 }
 
-.container>Futureforecast{
-    
+.container>.Futureforecast{
+
  display:flex;
  flex-direction:column;
+}
 
+.container>.Futureforecast{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+.futureforecast>.today-temp
+{
+    display:flex;
+    flex-direction:row;
+    gap:10px;
+}
+
+.result>.city
+{
+    margin-bottom:10px;
 }
