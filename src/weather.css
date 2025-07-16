@@ -24,6 +24,8 @@ a{
     gap:30px;
 }
 
+
+
 .container>.Futureforecast{
 
  display:flex;
@@ -35,12 +37,19 @@ a{
     flex-direction:column;
     gap:10px;
 }
-.futureforecast>.today-temp
+.forecast>.today-temp
 {
     display:flex;
     flex-direction:row;
     gap:10px;
 }
+
+.content>.forecast{
+    display:flex;
+    flex-direction:column;
+
+}
+
 
 .result>.city
 {
