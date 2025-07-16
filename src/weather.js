@@ -1,8 +1,9 @@
-
+let time="6:00";
 async function fetchtemp(city)
 {
+
     try{  
-  let response=await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}/next7days?unitGroup=us&key=CKP52GNDBJMQJRLAVRSVYRPW6`, { mode: 'cors' });
+  let response=await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}/next7days?unitGroup=us&key=CKP52GNDBJMQJRLAVRSVYRPW6`);
   if(!response.ok)
   {
     throw new Error('Network response was not ok');
@@ -66,15 +67,46 @@ function changetoCelsius(temp)
   let celsius=temp-32*(5/9);
   return celsius;
 }
-function tempToday()
+
+
+function changetime(time)
 {
-  
+  let [hours, minutes] = time.split(":").map(Number);
+
+ let date = new Date();
+ date.setHours(hours);
+ date.setMinutes(minutes);
+
+ date.setHours(date.getHours() + 3);
+
+let newTime = date.toTimeString().slice(0, 5);
+return newTime;
 }
-for(let i=0;i<5;i++)
+
+async function dailyforecast()
 {
- 6
+for(let i=0;i<6;i++)
+{
+
+  let new_time=" ";
+  let city="";
+  if(i>1)new_time=time+" PM";
+  else new_time=time+" AM";
+  if(input.value) {
+    city=input.value;
+  }
+  else {
+    city="Noida";
+  }
+ let response= await fetchtemp(city);
+ let time_dom=document.querySelector(`.time-${i}`);
+ time_dom.textContent=new_time;
+ let temp=document.querySelector(`.celsius-${i}`);
+ temp.textContent=(changetoCelsius(response.days[0].hours[6+3*i].temp)).toFixed(2)+"°C";
+ time=changetime(time);
 }
- 
+}
+dailyforecast(); 
 forecast(null);
 
 
